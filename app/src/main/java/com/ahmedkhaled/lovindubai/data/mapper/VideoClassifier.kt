@@ -43,8 +43,8 @@ object VideoClassifier {
             "live" -> LiveStatus.ACTIVE
             "upcoming" -> LiveStatus.UPCOMING
             else ->
-                if
-                    (hasLiveStreamingDetails) LiveStatus.COMPLETED
+                if (hasLiveStreamingDetails)
+                    LiveStatus.COMPLETED
                 else
                     null
         }
