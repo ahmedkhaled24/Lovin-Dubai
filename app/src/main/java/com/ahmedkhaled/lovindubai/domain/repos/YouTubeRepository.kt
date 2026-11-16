@@ -9,4 +9,5 @@ import kotlinx.coroutines.flow.Flow
 interface YouTubeRepository {
     fun getVideos(type: VideoType): Flow<PagingData<Video>>
     fun observeChannel(): Flow<Channel?>
+    fun observeVideo(id: String): Flow<Video?>
 }

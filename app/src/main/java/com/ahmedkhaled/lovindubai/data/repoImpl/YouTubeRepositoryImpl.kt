@@ -23,13 +23,20 @@ class YouTubeRepositoryImpl @Inject constructor(
 ) : YouTubeRepository {
 
     @OptIn(ExperimentalPagingApi::class)
-    override fun getVideos(type: VideoType): Flow<PagingData<Video>> =
-        Pager(
+    override fun getVideos(type: VideoType): Flow<PagingData<Video>> {
+        val pager = Pager(
             config = PagingConfig(pageSize = Constants.PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = VideoRemoteMediator(api, database),
-            pagingSourceFactory = { database.videoDao().pagingSource(type) }
-        ).flow.map { pagingData -> pagingData.map { it.toDomain() } }
+            pagingSourceFactory = {
+                database.videoDao().pagingSource(type)
+            }
+        )
+        return pager.flow.map { pagingData -> pagingData.map { video -> video.toDomain() } }
+    }
 
     override fun observeChannel(): Flow<Channel?> =
         database.channelDao().observeChannel().map { it?.toDomain() }
+
+    override fun observeVideo(id: String): Flow<Video?> =
+        database.videoDao().observeVideo(id).map { it?.toDomain() }
 }

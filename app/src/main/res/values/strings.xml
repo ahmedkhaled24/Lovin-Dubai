@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Lovin Dubai</string>
+
+    <string name="tab_shorts">Shorts</string>
+    <string name="tab_videos">Videos</string>
+    <string name="tab_live">Live</string>
+    <string name="channel_stats">%1$s subscribers • %2$s videos</string>
+    <string name="video_meta">%1$s views • %2$s</string>
+    <string name="views_count">%1$s views</string>
+    <string name="live_now">Live now</string>
+    <string name="scheduled_for">Scheduled for %1$s</string>
+    <string name="badge_live">LIVE</string>
+    <string name="badge_upcoming">UPCOMING</string>
+    <string name="empty_videos">No videos found</string>
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="error_refresh_failed">Couldn\'t refresh. Showing saved content.</string>
+    <string name="retry">Retry</string>
+
+    <string name="back">Back</string>
+    <string name="play">Play</string>
+    <string name="watch_on_youtube">Watch on YouTube</string>
+    <string name="video_unavailable">This video is no longer available</string>
 </resources>
