@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ahmedkhaled.lovindubai.R
+import com.ahmedkhaled.lovindubai.domain.models.QuotaExceededException
 import java.io.IOException
 
 @Composable
@@ -86,5 +87,6 @@ fun ErrorFooter(error: Throwable, onRetry: () -> Unit) {
 @Composable
 fun Throwable.toUserMessage(): String = when (this) {
     is IOException -> stringResource(R.string.error_no_internet)
+    is QuotaExceededException -> stringResource(R.string.error_quota_exceeded)
     else -> stringResource(R.string.error_generic)
 }

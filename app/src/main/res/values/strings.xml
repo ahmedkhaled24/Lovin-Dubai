@@ -16,7 +16,7 @@
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="error_refresh_failed">Couldn\'t refresh. Showing saved content.</string>
     <string name="retry">Retry</string>
-
+    <string name="error_quota_exceeded">Daily YouTube limit reached. Try again tomorrow.</string>
     <string name="back">Back</string>
     <string name="play">Play</string>
     <string name="watch_on_youtube">Watch on YouTube</string>

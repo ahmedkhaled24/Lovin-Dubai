@@ -11,6 +11,8 @@ import com.ahmedkhaled.lovindubai.data.local.entity.RemoteKeyEntity
 import com.ahmedkhaled.lovindubai.data.local.entity.VideoEntity
 import com.ahmedkhaled.lovindubai.data.mapper.toEntity
 import com.ahmedkhaled.lovindubai.data.remote.YouTubeApi
+import com.ahmedkhaled.lovindubai.domain.models.QuotaExceededException
+import retrofit2.HttpException
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -78,6 +80,14 @@ class VideoRemoteMediator(
             MediatorResult.Success(endOfPaginationReached = page.nextPageToken == null)
         } catch (e: CancellationException) {
             throw e
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+
+            if (e.code() == 403 && errorBody?.contains("quotaExceeded") == true) {
+                MediatorResult.Error(QuotaExceededException())
+            } else {
+                MediatorResult.Error(e)
+            }
         } catch (e: Exception) {
             MediatorResult.Error(e)
         }
